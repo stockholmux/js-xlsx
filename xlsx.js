@@ -7770,7 +7770,7 @@ return function parse_ws_xml_data(sdata, s, opts, guess) {
           if(isNaN(p.v)) p.v = "" // we don't want NaN if p.v is null
           break;
 				case 's':
-					sstr = strs[parseInt(p.v, 10)];
+					sstr = p.v ? strs[parseInt(p.v, 10)] : ''; //undefined p.v was causing a silent error unless opts.WTF was set
 					p.v = sstr.t;
 					p.r = sstr.r;
 					if(opts.cellHTML) p.h = sstr.h;
